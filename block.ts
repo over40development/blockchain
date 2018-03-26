@@ -3,11 +3,11 @@ import { Transaction } from "./transaction";
 
 export class Block {
 
-    public Index: number;
+    public Index: number = 0;
     public Timestamp: Date;
     public Transactions: List<Transaction> = new List<Transaction>();
-    public Proof: number;
-    public PreviousHash: string;
+    public Proof: number = 0;
+    public PreviousHash: string = "";
 
     public ToString(): string {
 

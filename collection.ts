@@ -1,4 +1,5 @@
 export class Map<T> {
+
     private items: { [key: string]: T };
 
     constructor() {
@@ -20,10 +21,10 @@ export class Map<T> {
 
 export class List<T> {
 
-    private items: Array<T> = [];
+    private items: Array<T> = new Array<T>();
 
     constructor(items?: Array<T>) {
-        this.items = items || [];
+        this.items = items || new Array<T>();
     }
 
     ToList(): List<T> {
@@ -56,6 +57,7 @@ export class List<T> {
 }
 
 declare global {
+    
     // tslint:disable-next-line:interface-name
     interface Array<T> {
         ToList(): List<T>;
@@ -64,11 +66,11 @@ declare global {
 
 Array.prototype.ToList = () => {
     return new List(this);
-};
+}
 
 export class Collection<T> {
 
-    private _items: Array<T> = [];
+    private _items: Array<T> = new Array<T>();
 
     public GetItems(): Array<T> {
 

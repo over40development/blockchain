@@ -29,7 +29,7 @@ export class BlockChain {
         this._currentTransactions = new List<Transaction>();
         this._chain = new List<Block>();
         this._nodes = new List<Node>();
-        this._lastBlock = this._chain.Last();
+        this._lastBlock = this._chain.Last() || new Block();
 
         this.CreateNewBlock(100, "1");
     }
@@ -137,7 +137,7 @@ export class BlockChain {
         return result.lastIndexOf("0000", 0) === 0;
     }
 
-    private GetHash(block: Block): string {
+    private GetHash(block: Block = new Block()): string {
         let blockText: string = JSON.stringify(block);
         return this.GetSha256(blockText);
     }
